@@ -1,5 +1,7 @@
 package com.niuzhuang.richbuy.common.dto;
 
+import com.niuzhuang.richbuy.common.dto.exception.ErrorInfo;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;

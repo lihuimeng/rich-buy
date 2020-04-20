@@ -1,4 +1,4 @@
-package com.niuzhuang.richbuy.common.dto;
+package com.niuzhuang.richbuy.common.dto.exception;
 
 import java.io.Serializable;
 import java.util.List;

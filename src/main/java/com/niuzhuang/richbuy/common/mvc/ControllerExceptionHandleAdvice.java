@@ -1,17 +1,13 @@
 package com.niuzhuang.richbuy.common.mvc;
 
 import com.niuzhuang.richbuy.common.dto.ActionResult;
-import com.niuzhuang.richbuy.common.dto.ErrorInfo;
+import com.niuzhuang.richbuy.common.dto.exception.ErrorInfo;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * @Author: huimeng.li
@@ -27,6 +23,7 @@ public class ControllerExceptionHandleAdvice {
         String message = e.getMessage();
         String[] split = message.split(":");
         ErrorInfo error = new ErrorInfo(split[0], split[1]);
+        e.printStackTrace();
         return new ActionResult(false, null, split[1], split[0]);
     }
 }
