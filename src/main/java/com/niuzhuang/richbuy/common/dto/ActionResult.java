@@ -25,7 +25,7 @@ public class ActionResult<T> implements Serializable {
         this.success = true;
     }
 
-    public ActionResult(boolean success, T data, String errorMessage, String errorCode) {
+        public ActionResult(boolean success, T data, String errorMessage, String errorCode) {
         this.success = success;
         this.data = data;
         ErrorInfo error = new ErrorInfo(errorCode, errorMessage);
