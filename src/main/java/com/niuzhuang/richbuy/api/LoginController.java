@@ -26,15 +26,6 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private UserMapper userMapper;
-
-    @Autowired
-    private RedisTemplate<String, String> redisTemplate;
-
-    @Resource(name = "redisTemplate")
-    private ValueOperations<String, String> valueOperations;
-
     @GetMapping("/helloworld")
     public String helloworld() {
         return "hello world";
