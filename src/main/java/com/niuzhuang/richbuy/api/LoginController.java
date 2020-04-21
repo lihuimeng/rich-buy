@@ -43,7 +43,6 @@ public class LoginController {
     @PostMapping("/register/{userName}/{psw}")
     public boolean register(@PathVariable String userName,
                             @PathVariable String psw) {
-        User user = userMapper.selectById(1);
         User byUserName = userService.getByUserName(userName);
         if (null != byUserName) {
             throw new BusinessException(new ErrorInfo("-1", "用户已存在，请直接登录"));
@@ -52,31 +51,32 @@ public class LoginController {
         userService.add(new User(userName, psw));
         return true;
 
-//        final String key = userName;
-//        String s = valueOperations.get(key);
-//        if (StringUtils.isNotBlank(s)) {
-//            throw new BusinessException(new ErrorInfo("-1", "重复注册，请直接登录！！"));
-//        }
-//
-//        if (psw.length() <6) {
-//            throw new BusinessException(new ErrorInfo("-1", "密码至少六位"));
-//        }
-//        valueOperations.set(userName, psw,600, TimeUnit.SECONDS);
-//        return true;
     }
 
     @PostMapping("/login/{userName}/{psw}")
     public boolean login(@PathVariable String userName,
                          @PathVariable String psw) {
-        String pswValue = valueOperations.get(userName);
-        if (StringUtils.isBlank(pswValue)) {
-            throw new BusinessException(new ErrorInfo("-1", "账号不存在！！"));
+
+        User user = userService.getByUserName(userName);
+        if (null == user) {
+            throw new BusinessException(new ErrorInfo("-1", "用户不存在"));
         }
-        if (StringUtils.equals(psw, pswValue)) {
-            return true;
-        } else {
+
+        String psw1 = user.getPsw();
+        if (!StringUtils.equals(psw1, psw)) {
             throw new BusinessException(new ErrorInfo("-1", "账号或密码错误"));
         }
+        return true;
+
+//        String pswValue = valueOperations.get(userName);
+//        if (StringUtils.isBlank(pswValue)) {
+//            throw new BusinessException(new ErrorInfo("-1", "账号不存在！！"));
+//        }
+//        if (StringUtils.equals(psw, pswValue)) {
+//            return true;
+//        } else {
+//            throw new BusinessException(new ErrorInfo("-1", "账号或密码错误"));
+//        }
     }
 
 
