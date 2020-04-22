@@ -14,9 +14,9 @@
     <name>rich-buy</name>
     <description>购物平台</description>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
+<!--    <properties>-->
+<!--        <java.version>1.8</java.version>-->
+<!--    </properties>-->
 
     <dependencies>
         <dependency>
@@ -141,7 +141,10 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
         </plugins>
     </build>
+
+
 
 </project>
